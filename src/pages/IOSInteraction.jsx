@@ -134,6 +134,7 @@ function IOSInteraction({ platform }) {
     try {
       let response = await fetch(
         "https://sangya.thefirstimpression.ai/process",
+        
         // "http://192.168.186.175:8701/api/interactivedemos/process",
         // "http://192.168.1.5:8701/process",
         // "https://hongs-hindi.interactivedemos.io/api/interactivedemos/process",

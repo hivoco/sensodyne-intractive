@@ -22,7 +22,7 @@ function Home() {
         </div>
 
         <Link
-          to={`interaction/?platform=${platform}`}
+          to={`interaction?platform=${platform}`}
           className="rounded-[120px]  mx-6 bg-white font-Poppins text-xl font-semibold text-center py-4  border-2 border-[#F7F7F7]/50   hover:shadow-md"
         >
           Get Started
