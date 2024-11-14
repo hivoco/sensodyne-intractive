@@ -17,6 +17,8 @@ import { useEffect, useState } from "react";
 import Survey from "./pages/Survey";
 import DisplayPdf from "./pages/DisplayPdf";
 import PlateformWisePages from "./pages/PlateformWisePages";
+import { v4 as uuidv4 } from "uuid";
+
 
 function App() {
   const [lastUuId, setLastUuId] = useState(null);
@@ -43,6 +45,7 @@ function App() {
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
+      console.log("sending uuid");
       const uuId = sessionStorage.getItem("uuId");
       if (uuId && uuId !== lastUuId) {
         postData(uuId);
@@ -57,6 +60,10 @@ function App() {
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("uuId", uuidv4());
   }, []);
 
   return (

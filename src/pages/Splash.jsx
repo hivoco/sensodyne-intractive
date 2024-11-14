@@ -10,10 +10,10 @@ const Splash = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    sessionStorage.setItem("uuId", uuidv4());
-    console.log(sessionStorage.getItem("uuId"));
-  }, []);
+  // useEffect(() => {
+  //   sessionStorage.setItem("uuId", uuidv4());
+  //   console.log(sessionStorage.getItem("uuId"));
+  // }, []);
 
   useEffect(() => {
     const platformName = getPlatform();
