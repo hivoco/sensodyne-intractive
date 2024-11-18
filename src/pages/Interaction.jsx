@@ -26,9 +26,13 @@ function Interaction({ platform }) {
   // const [startClicked, setStartClicked] = useState(false);
   const [isFirstAPICall, setIsFirstAPICall] = useState(true);
 
+  const [isFirstConvo, setIsFirstConvo] = useState(true);
+
   // const [selectedOption, setSelectedOption] = useState("");
   // const [quizData, setQuizData] = useState([]);
   const audioRef = useRef(null);
+  // const adAudioRef = useRef(null);
+  const adAudioRef = useRef(null); 
   const videoRef = useRef(null);
   const [uuId, setUuId] = useState(null);
 
@@ -97,7 +101,7 @@ function Interaction({ platform }) {
     try {
       let response = await fetch(
         "https://sangya.thefirstimpression.ai/process",
-        // "http://192.168.1.5:8701/process",
+        // "http://192.168.1.9:8701/process",
         {
           method: "POST",
           headers: {
@@ -117,6 +121,7 @@ function Interaction({ platform }) {
       playAudio(data?.audio);
       setCurrentSubtitle("");
       setSentence(data.answer);
+
       // data?.video_link && displayVideo(data?.video_link);
       // displayVideo(
       //   "https://videoforinteractivedemons.s3.ap-south-1.amazonaws.com/shalimar_hero/antiviral.mp4"
@@ -171,6 +176,15 @@ function Interaction({ platform }) {
     setIsUserSpeaking(true);
     setIsStopImgVisible(true);
     setSuperText("");
+
+    setIsFirstConvo(false);
+  }
+
+  function playAdAudio(){
+    adAudioRef.current.src = "/sounds/adMusic.mp3";
+    adAudioRef?.current.play();
+    // adAudioRef.current.playbackRate = 2; 
+
   }
 
   if (hasRecognitionEnded) {
@@ -205,6 +219,8 @@ function Interaction({ platform }) {
   //   );
   // }
 
+  
+
   return (
     <div
       className={`${
@@ -213,7 +229,17 @@ function Interaction({ platform }) {
           : ""
       } w-full h-svh md:h-[98vh] flex flex-col overflow-hidden`}
     >
-      <audio ref={audioRef} onEnded={handleAudioEnd} className="hidden"></audio>
+      <audio
+        ref={audioRef}
+        onEnded={isFirstConvo ? handleAudioEnd : playAdAudio}
+        className="hidden"
+      ></audio>
+
+      <audio
+        ref={adAudioRef}
+        onEnded={handleAudioEnd}
+        className="hidden"
+      ></audio>
 
       {/* video ui elements */}
       <video
