@@ -32,7 +32,7 @@ function Interaction({ platform }) {
   // const [quizData, setQuizData] = useState([]);
   const audioRef = useRef(null);
   // const adAudioRef = useRef(null);
-  const adAudioRef = useRef(null); 
+  const adAudioRef = useRef(null);
   const videoRef = useRef(null);
   const [uuId, setUuId] = useState(null);
 
@@ -98,10 +98,12 @@ function Interaction({ platform }) {
   // console.log(language);
 
   async function sendTextToBackend(text) {
+    const url = "https://sangya.thefirstimpression.ai/process";
+    // const local = "http://192.168.1.9:8701/process";
     try {
       let response = await fetch(
-        "https://sangya.thefirstimpression.ai/process",
-        // "http://192.168.1.9:8701/process",
+        url,
+        // local,
         {
           method: "POST",
           headers: {
@@ -180,11 +182,10 @@ function Interaction({ platform }) {
     setIsFirstConvo(false);
   }
 
-  function playAdAudio(){
+  function playAdAudio() {
     adAudioRef.current.src = "/sounds/adMusic.mp3";
     adAudioRef?.current.play();
-    // adAudioRef.current.playbackRate = 2; 
-
+    // adAudioRef.current.playbackRate = 2;
   }
 
   if (hasRecognitionEnded) {
@@ -218,8 +219,6 @@ function Interaction({ platform }) {
   //     />
   //   );
   // }
-
-  
 
   return (
     <div
