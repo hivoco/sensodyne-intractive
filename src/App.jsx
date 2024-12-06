@@ -19,15 +19,14 @@ import DisplayPdf from "./pages/DisplayPdf";
 import PlateformWisePages from "./pages/PlateformWisePages";
 import { v4 as uuidv4 } from "uuid";
 
-
 function App() {
   const [lastUuId, setLastUuId] = useState(null);
 
   const postData = async (uuId = "empty uuid") => {
     try {
       const res = await fetch(
-        "https://sangya.thefirstimpression.ai//api/interactivedemos/save_date",
-        // "http://192.168.1.9:8502/api/interactivedemos/save_date",
+        // "https://sangya.thefirstimpression.ai//api/interactivedemos/save_date",
+        "https://tata-sampann-en.thefirstimpression.ai/api/interactivedemos/save_date",
         {
           method: "POST",
           headers: {

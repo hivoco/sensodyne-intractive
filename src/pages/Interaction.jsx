@@ -98,8 +98,8 @@ function Interaction({ platform }) {
   // console.log(language);
 
   async function sendTextToBackend(text) {
-    const url = "https://sangya.thefirstimpression.ai/process";
-    // const local = "http://192.168.1.9:8701/process";
+    // const url = "https://sangya.thefirstimpression.ai/process";
+    const url = "https://tata-sampann-en.thefirstimpression.ai/process";
     try {
       let response = await fetch(
         url,
